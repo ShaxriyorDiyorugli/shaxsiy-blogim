@@ -3,3 +3,140 @@
     font-weight: 700 !important;
     font-size: 28px !important;
 }
+
+/* Umumiy sozlamalar */
+body {
+    font-family: 'Philosopher', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Section va Container */
+#home {
+    padding: 0;
+    min-height: 85vh; /* Footer bilan oraliq qolishi uchun */
+    display: flex;
+    justify-content: center; /* Gorizontal o'rtaga */
+    align-items: center;     /* Vertikal o'rtaga */
+}
+#home .row {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Kontentni markazga surish */
+}
+
+/* Profil rasmi */
+.profile-pictures {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Profil va matn qismini o'rtaga tekislash */
+.about {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Rasm va matn yonma-yon boshlanishi uchun */
+    margin-bottom: 20px;
+}
+/* Ijtimoiy tarmoq piktogrammalari o'lchami */
+.social-links {
+    gap: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #222;
+}
+
+.desc {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #555; /* Biroq kulrangroq rang professional ko'rinadi */
+    margin-top: 5px;
+    letter-spacing: 0.5px; /* Harflar orasini biroz ochish */
+}
+
+/* Ijtimoiy tarmoq piktogrammalari */
+.social-links {
+    gap: 15px;
+    display: flex;
+}
+
+
+.social-links a {
+
+    transition: transform 0.3s ease;
+    filter: grayscale(20%);
+}
+
+.social-links a:hover {
+    transform: translateY(-5px);
+    filter: grayscale(0%);
+}
+
+/* Pastki matn va tugmalar */
+.detail .size-big {
+    font-size: 1.4rem;
+    margin: 25px 0;
+    color: #444;
+}
+
+.btns-wrapper {
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid #007bff;
+    color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 12px rgba(0,123,255,0.3);
+}
+
+/* Responsive (Mobil qurilmalar uchun) */
+@media (max-width: 768px) {
+    .about {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-pictures {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .btns-wrapper {
+        justify-content: center;
+    }
+}
