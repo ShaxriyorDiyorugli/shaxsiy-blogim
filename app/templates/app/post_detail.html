@@ -6,22 +6,57 @@
 <div class="container my-5" style="max-width:900px;">
 
     <article>
-        <a href="{% url 'category_detail' post.category.pk %}" 
-           class="text-muted">← {{ post.category }}</a>
+        <a href="{% url 'category_detail' post.category.pk %}"
+           class="text-muted">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                 class="bi bi-chevron-double-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                      d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
+                <path fill-rule="evenodd"
+                      d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
+            </svg>
+            {{ post.category }}</a>
         <h1 class="my-3">{{ post.title }}</h1>
-        <p class="text-muted">
-            📅 {{ post.created_at|date:"d.m.Y H:i" }}  |
-            👁 {{ post.views }} ko'rish  |
-            💬 {{ comments.count }} komment
+        <p class="text-muted d-flex align-items-center flex-wrap gap-3">
+            <span class="d-flex align-items-center gap-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-event"
+             viewBox="0 0 16 16">
+            <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/>
+            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+        </svg>
+        {{ post.created_at|date:"d.m.Y H:i" }}
+    </span>
+
+            <span class="text-secondary">|</span>
+            <span class="d-flex align-items-center gap-2">
+        👁 {{ post.views }} ko'rish
+    </span>
+
+            <span class="text-secondary">|</span>
+            <span class="d-flex align-items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-dots"
+             viewBox="0 0 16 16">
+            <path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+            <path d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9 9 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.4 10.4 0 0 1-.524 2.318l-.003.011a11 11 0 0 1-.244.637c-.079.186.074.394.273.362a22 22 0 0 0 .693-.125m.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6-3.004 6-7 6a8 8 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a11 11 0 0 0 .398-2"/>
+        </svg>
+        {{ comments.count }} komment
+    </span>
         </p>
+
         <hr>
         <div class="my-4">{{ post.content|linebreaks }}</div>
     </article>
 
     <hr class="my-5">
-   <section>
-        <h4 class="mb-4">💬 Kommentlar ({{ comments.count }})</h4>
-
+    <section>
+        <h4 class="mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-dots"
+                 viewBox="0 0 16 16">
+                <path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+                <path d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9 9 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.4 10.4 0 0 1-.524 2.318l-.003.011a11 11 0 0 1-.244.637c-.079.186.074.394.273.362a22 22 0 0 0 .693-.125m.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6-3.004 6-7 6a8 8 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a11 11 0 0 0 .398-2"/>
+            </svg>
+            Comments ({{ comments.count }})
+        </h4>
         {% for comment in comments %}
         <div class="card mb-3">
             <div class="card-body">
@@ -40,33 +75,39 @@
     </section>
 
     <hr class="my-4">
-   <section>
-        <h5 class="mb-3">✍️ Komment qoldiring</h5>
+    <section>
+        <h5 class="mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                 class="bi bi-chat-left-text" viewBox="0 0 16 16">
+                <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                <path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6m0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"/>
+            </svg>
+            Komment qoldiring
+        </h5>
         <form method="POST">
             {% csrf_token %}
             <div class="mb-3">
-                <input type="text" 
-                       name="name" 
-                       class="form-control" 
-                       placeholder="Ismingiz" 
+                <input type="text"
+                       name="name"
+                       class="form-control"
+                       placeholder="Ismingiz"
                        required>
             </div>
             <div class="mb-3">
-                <textarea name="body" 
-                          class="form-control" 
-                          rows="4" 
-                          placeholder="Fikringiz..." 
+                <textarea name="body"
+                          class="form-control"
+                          rows="4"
+                          placeholder="Fikringiz..."
                           required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">
-                Yuborish 💬
+            <button type="submit" class="btn btn-primary">Send
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send"
+                     viewBox="0 0 16 16">
+                    <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
+                </svg>
             </button>
         </form>
     </section>
-
-    <br>
-    <a href="{% url 'blog' %}">← Blogga qaytish</a>
-
 </div>
 {% endblock %}
 

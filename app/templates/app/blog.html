@@ -4,15 +4,15 @@
 
 {% block content %}
 <div class="container my-5" style="max-width:900px;">
-    <h2 class="mb-4">Kategoriyalar</h2>
+    <h2 class="mb-4 text-center">BLOG</h2>
     <div class="row g-3">
         {% for category in categories %}
-        <div class="col-md-4">
+        <div class="col-md-12">
             <a href="{% url 'category_detail' category.pk %}"
                class="card text-decoration-none text-dark h-100">
                 <div class="card-body">
-                    <h5 class="card-title">{{ category.title }}</h5>
-                    <p class="text-muted">
+                    <h5 class="card-title text-center">{{ category.title }}</h5>
+                    <p class="text-muted text-center">
                         {{ category.post_set.count }} ta post
                     </p>
                 </div>
