@@ -7,3 +7,9 @@ def index(request):
         'title': 'Shaxriyor\'s Blog',
     }
     return render(request, 'app/index.html', context)
+
+def blog(request):
+    return render(request, 'app/blog.html', {})
+
+def about(request):
+    return render(request, 'app/about.html', {})

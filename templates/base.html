@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Alyamama:wght@400;700&family=Clicker+Script&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
           rel="stylesheet">
 
-    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=1.2.1">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=1.2.2">
 
     <title>
         {% block title %} Shaxriyor's Blog {% endblock title %}
@@ -21,7 +21,10 @@
 </head>
 <body>
 {% include 'components/_navbar.html' %}
-{% include 'components/_main.html' %}
+
+{% block content %}
+{% endblock content %}
+
 {% include 'components/_footer.html' %}
 {% include 'components/_script.html' %}
 </body>
