@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Category, Comment
+from .models import Post, Category, Comment, ProjectCategory, Projects
 
 def index(request):
     context = {'title': "Shaxriyor's Blog"}
@@ -24,7 +24,6 @@ def category_detail(request, pk):
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk, is_publish=True)
-
     post.views += 1
     post.save()
 
@@ -36,8 +35,18 @@ def post_detail(request, pk):
             return redirect('post_detail', pk=pk)
 
     comments = post.comments.all()
-    context = {
-        'post': post,
-        'comments': comments,
-    }
+    context = {'post': post, 'comments': comments}
     return render(request, 'app/post_detail.html', context)
+
+def projects_list(request):
+    categories = ProjectCategory.objects.all()
+    context = {
+        'categories': categories,
+    }
+    return render(request, 'app/projects.html', context)
+def project_detail(request, pk):
+    project = get_object_or_404(Projects, pk=pk, is_publish=True)
+    project.views += 1
+    project.save()
+    context = {'project': project}
+    return render(request, 'app/project_detail.html', context)

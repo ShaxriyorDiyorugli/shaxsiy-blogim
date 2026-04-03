@@ -41,3 +41,34 @@ class Comment(models.Model):
         verbose_name = 'Comment'
         verbose_name_plural = 'Comments'
         ordering = ['-created_at']
+
+
+class ProjectCategory(models.Model):
+    title = models.CharField(unique=True, max_length=100, verbose_name='Project Name')
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Project Category'
+        verbose_name_plural = 'Project Categories'
+
+class Projects(models.Model):
+    title = models.CharField(verbose_name='Name of Project', max_length=100, unique=True)
+    content = models.TextField(verbose_name='Content')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Created at')
+    updated_at = models.DateTimeField(auto_now=True, verbose_name='Update at')
+    is_publish = models.BooleanField(default=True, verbose_name='Publish')
+    views = models.IntegerField(default=0, verbose_name='Views')
+    project = models.ForeignKey(
+    ProjectCategory,
+    on_delete=models.CASCADE,
+    related_name='projects_set',
+    verbose_name='Project Category')
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Project'
+        verbose_name_plural = 'Projects'
