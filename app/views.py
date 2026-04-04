@@ -48,5 +48,17 @@ def project_detail(request, pk):
     project = get_object_or_404(Projects, pk=pk, is_publish=True)
     project.views += 1
     project.save()
-    context = {'project': project}
+
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        body = request.POST.get('body')
+        if name and body:
+            Comment.objects.create(project=project, name=name, body=body)  # ← post= o'rniga project=
+            return redirect('project_detail', pk=pk)
+
+    comments = project.comments.all()
+    context = {
+        'projects': project,
+        'comments': comments,
+    }
     return render(request, 'app/project_detail.html', context)

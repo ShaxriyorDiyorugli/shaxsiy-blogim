@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Projects{% endblock %}
+
+{% block content %}
+<div class="container my-5" style="max-width:900px;">
+    <h2 class="mb-4 text-center">PROJECTS</h2>
+    <div class="row g-3">
+        {% for category in categories %}
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ category.title }}</h5>
+                    <hr>
+                    {% for project in category.projects_set.all %}
+                        {% if project.is_publish %}
+                        <div class="mb-2">
+                            <a href="{% url 'project_detail' project.pk %}"
+                               class="text-decoration-none">
+                                <strong>{{ project.title }}</strong>
+                            </a>
+                            <p class="text-muted mb-1">
+                                {{ project.content|truncatewords:15 }}
+                            </p>
+                        </div>
+                        {% endif %}
+                    {% empty %}
+                        <p class="text-muted">Hozircha project yo'q.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>Hozircha kategoriya yo'q.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
